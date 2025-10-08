@@ -6,7 +6,7 @@ using System.Text;
  * Gebruik bij uitvoer overal string interpolatie, dus Console.WriteLine($"Hallo, {naam}"); en niet  Console.WriteLine("Hallo, " + naam);
  */
 
-namespace ConsoleShorts01
+namespace ConsoleShortsBasis
 {
     class Program
     {
