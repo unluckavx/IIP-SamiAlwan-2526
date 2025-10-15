@@ -21,15 +21,7 @@ namespace ConsoleBmi
 			double LengteNaarMeter = Convert.ToDouble(Lengte) / 100;
 			double BMI = Convert.ToDouble(gewicht) / Math.Pow(LengteNaarMeter, 2);
 			Console.WriteLine($"Je BMI bedraagt: {BMI:F1}");
-		
-			
-			
-			
-			
-			
-			
-		
-			
+	
         }
     }
 }
