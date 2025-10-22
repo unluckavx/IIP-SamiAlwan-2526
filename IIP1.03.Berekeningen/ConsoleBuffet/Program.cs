@@ -67,6 +67,7 @@ namespace ConsoleBuffet
             Console.WriteLine($"- {b5} briefje(s) van 5");
             Console.WriteLine($"- {m2} stuk(ken) van 2");
             Console.WriteLine($"- {m1} stuk(ken) van 1");
+
             Console.ResetColor();
         }
     }
