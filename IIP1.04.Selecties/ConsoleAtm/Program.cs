@@ -7,13 +7,11 @@ using System;
 			static void Main(string[] args)
 			{
 			
-			
-			
 			const int MaxAfhaling = 200;
-			decimal saldo = 500.00M;  // M voor decimal 
-			string header = @"Bankautomaat
-============";
-			Console.WriteLine(header);
+			decimal saldo = 500.00M;  
+			Console.WriteLine(@"Bankautomaat
+============");
+			
 			
 			
 			Console.WriteLine();
