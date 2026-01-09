@@ -1,81 +1,74 @@
 using System;
 
-namespace ConsoleSnoepmachine
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            const decimal PRIJS_DRANK = 2.00m;
-            const decimal PRIJS_SNOEP = 1.50m;
-            decimal saldo = 0m;
-            string keuze = "";
-            {
-                Console.Clear();
-                Console.WriteLine("SNOEPMACHINE 🍬🥤");
-                Console.WriteLine("-----------------");
-                Console.WriteLine("a. geld inwerpen");
-                Console.WriteLine($"b. drank kopen ({PRIJS_DRANK:0.00} euro)");
-                Console.WriteLine($"c. snoep kopen ({PRIJS_SNOEP:0.00} euro)");
-                Console.WriteLine("d. stoppen");
-                Console.WriteLine();
-                Console.WriteLine($"Huidig saldo: {saldo:0.00} euro");
-                Console.Write("Maak je keuze: ");
-                keuze = Console.ReadLine().ToLower();
-					
-					switch (keuze)
-                {
-					case "a":
-					Console.Write("Voer een bedrag in: ");
-					if (decimal.TryParse(Console.ReadLine(), out decimal inworp))
-                {
-					if (inworp % 0.5m == 0)
-                {
-                    saldo += inworp;
-                    Console.WriteLine($"Je hebt {inworp:0.00} euro toegevoegd.");
-                }
-                    else	
-                {
-					Console.WriteLine("Fout: bedrag moet een veelvoud van 0,5 euro zijn!");
-                }
-                }
+	namespace ConsoleAtm
+	{
+		internal class Program
+		{
+			static void Main(string[] args)
+			{
+			
+			const int MaxAfhaling = 200;
+			decimal saldo = 500.00M;  
+			Console.WriteLine(@"*******************
+Ijssalon 't Bolleke
+************************");			
+			
+		
+			Console.WriteLine();
+			Console.WriteLine("Wat wil je bestellen:");
+			Console.WriteLine("a) Schepijs");
+			Console.WriteLine("b) smoxre");
+			
+			Console.WriteLine();
+			
+			Console.Write("Maak je keuze: ");
+			char keuze = Convert.ToChar(Console.ReadLine()); 
+			
+		   
+			string aardbei = Console.ReadLine();
+			switch (keuze)
+			{
+				case 'a':
+					Console.Write("Wil je een hoorntje of een bakje? (h/b): ");
+					char Schepijs = Convert.ToChar(Console.ReadLine());
+					if (Schepijs <= 0)
+				   {
+						Console.WriteLine("Vanille, aardbei, chocolade, mokka; laat leeg om te stoppen):");
+			       }   
+					else if (Schepijs > MaxAfhaling || Schepijs > saldo)
+		           {     
+						Console.WriteLine("Vanille, aardbei, chocolade, mokka; laat leeg om te stoppen):");
+	               }
+					else if (Schepijs % 10 != 0 || Schepijs == 10 || Schepijs == 30)
+	               {
+						Console.Write("Vanille, aardbei, chocolade, mokka; laat leeg om te stoppen):");
+		           }
 					else
-                {
-					Console.WriteLine("Ongeldige invoer. Typ een getal.");
-                }
+		           {
+						saldo -= Schepijs;
+						Console.WriteLine($"afhaling ok – het nieuw saldo is {saldo:C2}");
+		           }
 					break;
-                    case "b":
-                    if (saldo >= PRIJS_DRANK)
-                {
-                    saldo -= PRIJS_DRANK;
-                    Console.WriteLine("Je hebt een drank gekocht. 🍹");
-                }
-                    else
-                {
-                    Console.WriteLine("Onvoldoende saldo voor drank!");
-                }
-                    break;
-                    case "c":
-                    if (saldo >= PRIJS_SNOEP)
-                {
-                    saldo -= PRIJS_SNOEP;
-                    Console.WriteLine("Je hebt een snoep gekocht. 🍭");
-                }
-                    else
-                {
-                    Console.WriteLine("Onvoldoende saldo voor snoep!");
-                }
-                    break;
-                    case "d":
-                    Console.WriteLine("Bedankt voor je aankoop! 👋");
-                    break;
-                    default:
-                    Console.WriteLine($"'{keuze}' is geen geldige keuze, druk op een toets om verder te gaan...");
-                    break;
-                }
-                    Console.WriteLine("Druk op een toets om verder te gaan...");
-                    Console.ReadKey();
-            }       while (keuze != "d");
+
+				case 'b':
+					Console.Write("welk bedrag wil je storten: ");
+					decimal bedragStorten = Convert.ToDecimal(Console.ReadLine());
+					saldo += bedragStorten;
+					Console.WriteLine();
+					Console.WriteLine($"storting ok – het nieuw saldo is {saldo:C2}");
+					break;
+				case 'c':
+					Console.WriteLine("bedankt en tot ziens");
+					break;
+
+				default:
+					Console.WriteLine("ongeldige keuze");
+					break;
+					
+		      }
+
+            
+			Console.ReadLine();
         }
     }
 }
